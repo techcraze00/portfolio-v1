@@ -1,0 +1,258 @@
+/* ==========================================================================
+   Scrollbar Hiding
+   ========================================================================== */
+/* Hide scrollbar for Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  /* ==========================================================================
+     Base & Body Styles
+     ========================================================================== */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(147, 195, 240);
+  }
+  
+  /* ==========================================================================
+     Container & Layout
+     ========================================================================== */
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+  }
+  
+  /* ==========================================================================
+     Header Styles
+     ========================================================================== */
+  header {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    background-color: rgba(255, 255, 255, 0.273);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 15px #72a1de8d;
+    z-index: 999;
+  }
+  
+  .left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .left img {
+    width: 40px;
+    margin: 5px;
+    object-fit: cover;
+  }
+  
+  header ul {
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+    padding: 15px;
+    border-radius: 50px;
+    background-color: rgba(0, 0, 69, 0.158);
+    backdrop-filter: blur;
+    box-shadow: 0 0 10px #727fde65;
+  }
+  
+  header ul li {
+    list-style: none;
+  }
+  
+  header ul a {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    margin: 0 10px;
+    transition: 0.3s;
+  }
+  
+  header ul a:hover {
+    text-shadow: 0 0 15px black;
+  }
+  
+  .box-icons {
+    display: flex;
+    gap: 40px;
+  }
+  
+  .box-icons p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: black;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #727fde;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  .box-icons p:hover {
+    background-color: #727fde;
+    color: white;
+    box-shadow: 0 0 15px #727fde6f;
+  }
+  
+  /* ==========================================================================
+     Background & Video Element
+     ========================================================================== */
+  .abstract-ball {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .abstract-ball video {
+    width: 100%;
+  }
+  
+  /* ==========================================================================
+     Hero Section
+     ========================================================================== */
+  .hero {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* ==========================================================================
+     Google Fonts Imports
+     ========================================================================== */
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+  
+  /* ==========================================================================
+     Root Variables
+     ========================================================================== */
+  :root {
+    --headline-color: rgb(255, 255, 255);
+    --background-color: #11151c;
+    --text-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  /* ==========================================================================
+     Headline Text (Fading Text) Styles
+     ========================================================================== */
+  .headline-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+  
+  #text-behind,
+  #text-behind-blur,
+  #text-front {
+    font-family: 'Roboto', sans-serif;
+    position: absolute;
+    text-align: center;
+    font-size: clamp(24px, 20vw, 200px);
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 10px;
+    line-height: 0.8;
+  }
+  
+  #text-behind {
+    color: transparent;
+    z-index: 1;
+  }
+  
+  #text-behind-blur {
+    color: var(--headline-color);
+    filter: blur(7.5px);
+    -webkit-filter: blur(7.5px);
+    z-index: 0;
+  }
+  
+  #text-front {
+    color: var(--headline-color);
+    /* Use text stroke for an outlined effect */
+    stroke: 2px var(--headline-color);
+    -webkit-text-stroke: 2px var(--headline-color);
+    z-index: 3;
+  }
+  
+  /* ==========================================================================
+     Frosted Glass Card & Button
+     ========================================================================== */
+  .frosted-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .frosted-card p {
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0 10px;
+  }
+  
+  .glass-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .glass-button:hover {
+    transform: translateY(0);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+
+  
